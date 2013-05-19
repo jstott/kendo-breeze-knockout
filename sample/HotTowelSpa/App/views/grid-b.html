@@ -1,0 +1,44 @@
+﻿<section>
+    <h2 class="page-title" data-bind="text: title"></h2>
+    <hr />
+    <div data-bind="kendoGrid: {
+    data: function (widget, options) {
+        widget.setDataSource(new kendo.data.extensions.BreezeDataSource({
+            entityManager: manager,
+            endPoint: 'Products',        // endPoint can be a resource string or breeze query object
+            defaultSort: 'productName asc'
+        })
+        );
+    },
+    columns: [
+    { field: 'productName', title: 'Name' },
+    { field: 'quantityPerUnit', title: 'Qty/Per' },
+    { field: 'reorderLevel', title: 'Re-Order Lvl' }
+    ],
+      pageable: { pageSize: 10 },
+      sortable: true,
+      filterable: false
+}"></div>
+    <hr/>
+    <h3>Html Source Code</h3>
+    <pre>
+&lt;div data-bind="kendoGrid: {
+    data: function (widget, options) {
+        widget.setDataSource(new kendo.data.extensions.BreezeDataSource({
+            entityManager: manager,
+            endPoint: 'Products',        // endPoint can be a resource string or breeze query object
+            defaultSort: 'productName asc'
+        })
+        );
+    },
+    columns: [
+    { field: 'productName', title: 'Name' },
+    { field: 'quantityPerUnit', title: 'Qty/Per' },
+    { field: 'reorderLevel', title: 'Re-Order Lvl' }
+    ],
+    pageable: { pageSize: 10 },
+    sortable: true,
+    filterable: false
+}" >&lt; /div >
+    </pre>
+</section>

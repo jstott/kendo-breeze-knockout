@@ -1,0 +1,31 @@
+{
+  "name": "breeze-kendo-spike",
+  "version": "0.1.0",
+  "description": "Sample for breeze-kendo-knockout",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jstott/breeze-kendo.git"
+  },
+  "keywords": [
+    "breezejs",
+    "kendoui",
+    "knockoutjs",
+    "jstott"
+  ],
+  "author": "J. W. Stott",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "azure": "~0.7.2",
+    "mime": "~1.2.9",
+    "grunt-azure-storage": "~0.0.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-mincss": "~0.3.2"
+  }
+}

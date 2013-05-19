@@ -1,0 +1,30 @@
+{
+  "name": "kendo-breeze-knockout.datasource",
+  "version": "0.0.4",
+  "description": "Kendo-UI Datasource extsion for BreezeJS and KnockoutJS",
+  "main": "src/kendo-breeze-knockout.datasource.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jstott/kendo-breeze-knockout.git"
+  },
+  "keywords": [
+    "breezejs",
+    "kendo-ui",
+    "knockoutjs",
+    "grid",
+    "jstott"
+  ],
+  "author": "J. W. Stott",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.5.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-bump": "0.0.2",
+    "grunt-contrib-concat": "~0.3.0"
+  }
+}

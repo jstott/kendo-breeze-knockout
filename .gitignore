@@ -1,0 +1,53 @@
+.DS_Store
+*.swp
+*.sw0
+*.orig
+#NuGet - http://stackoverflow.com/questions/5533050/gitignore-exclude-folder-but-include-specific-subfolder
+# dir/* - '*' is significant to not completely ignore dir, but only files within so you can override later
+sample/SPA/packages/*
+
+
+# Build Folders 
+_bin*/
+[Oo]bj/
+[Bb]in/
+*.suo
+*.user
+*.suo
+*.user
+[Dd]ebug
+[Rr]elease
+sample/packages
+node_modules/
+
+# wildcard files that def should not go
+*.log
+log.txt
+*.pdb
+*.psess
+*.dgml
+*.testsettings
+thumbs.db
+
+#ignore folders
+
+
+# mstest test results
+TestResults
+
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+
+#old depricated projects
+_svn
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+#old depricated projects
+
+BootConfigDev*
+Build/paths-tablet.txt
+

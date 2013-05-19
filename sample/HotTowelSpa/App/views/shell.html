@@ -1,0 +1,15 @@
+﻿<div>
+    <header>
+        <!--ko compose: {view: 'nav'} -->
+        <!--/ko-->
+    </header>
+    <section id="content" class="main container-fluid"
+        data-bind="compose: {
+            model: router.activeItem,
+            afterCompose: router.afterCompose,
+            transition: 'entrance'
+    }">
+    </section>
+    <footer data-bind="compose: { view: 'footer' }">
+    </footer>
+</div>
