@@ -2,33 +2,32 @@
   var vm = {
     activate: activate,
     viewAttached: viewAttached,
-    title: 'Grid via JQuery init',
+    dataSource: dataSource,
+    manager: datacontext.manager,
+    title: 'Grid via data-bind',
   };
 
   return vm;
 
-
+  
   function activate() {
-    logger.log('Activated', null, 'grid-a', true);
+    logger.log('Activated', null, 'grid-b', true);
+    
     return true;
   }
-
+  function dataSource(widget) {
+    widget.setDataSource(new kendo.data.extensions.BreezeDataSource({
+        entityManager: manager,
+        endPoint: 'Products',        // endPoint can be a resource string or breeze entityQuery
+        defaultSort: 'productName asc',
+        mapping: {
+          ignore: ['products'] // not spec. asking for extension here - but grid-b does, and category.products will be cached!
+        }
+      })
+    );
+  }
   function viewAttached() {
-    var grid = $("#grid-a").kendoGrid({
-      columns: [
-        { field: 'productName', title: 'Name' },
-        { field: 'quantityPerUnit', title: 'Qty/Per' },
-        { field: 'reorderLevel', title: 'Re-Order Lvl' }
-      ],
-      dataSource: new kendo.data.extensions.BreezeDataSource({
-        entityManager: datacontext.manager,
-        endPoint: "Products",        // endPoint can be a resource string or breeze query object
-        defaultSort: "productName asc"
-      }),
-      pageable: { pageSize: 10 },
-      sortable: true,
-      filterable: false
-    });
+    
     return true;
   }
 

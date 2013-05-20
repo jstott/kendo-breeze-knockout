@@ -34,8 +34,11 @@ h1, h2, h3 {
 
 section.main {
     margin-top: 80px;
-}
 
+}
+#content {
+    margin-bottom: 80px;
+}
 .navbar .brand {
     padding: 6px 30px 12px 30px;
     margin-bottom: -8px;

@@ -20,10 +20,10 @@
           return datacontext.manager.fetchMetadata()
             .then(function() {
               router.mapNav('home');
-              router.mapNav('grid-a'); // js object creation
-              router.mapNav('grid-b'); // html attribute creation
-              router.mapNav('grid-c'); // html attr / js datasource
-              router.mapNav('chartVM'); // 
+              router.mapNav('grid-a'); // simple
+              router.mapNav('grid-b'); // extended collection
+              router.mapNav('chart'); // 
+              
               // *******************************************************************
               // key to setting up binding to DataSource Extension correctly 
               // override ko.kendo plug-in - must be done somewhere in runtime

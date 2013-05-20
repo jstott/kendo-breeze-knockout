@@ -253,17 +253,13 @@
     <Content Include="App\services\datacontext.js" />
     <Content Include="App\services\logger.js" />
     <Content Include="App\viewmodels\chart.js" />
-    <Content Include="App\viewmodels\chartVM.js" />
     <Content Include="App\viewmodels\grid-a.js" />
     <Content Include="App\viewmodels\grid-b.js" />
-    <Content Include="App\viewmodels\grid-c.js" />
     <Content Include="App\viewmodels\home.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\views\chart.html" />
-    <Content Include="App\views\chartVM.html" />
     <Content Include="App\views\grid-a.html" />
     <Content Include="App\views\grid-b.html" />
-    <Content Include="App\views\grid-c.html" />
     <Content Include="App\views\footer.html" />
     <Content Include="App\views\home.html" />
     <Content Include="App\views\nav.html" />
@@ -327,6 +323,9 @@
     <Content Include="Views\HotTowel\_splash.cshtml" />
     <Content Include="Scripts\knockout-kendo.min.js.map">
       <DependentUpon>knockout-kendo.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\kendo-breeze-knockout.datasource.min.js.map">
+      <DependentUpon>kendo-breeze-knockout.datasource.js</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 {
   "name": "kendo-breeze-knockout.datasource",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Kendo-UI Datasource extsion for BreezeJS and KnockoutJS",
   "main": "src/kendo-breeze-knockout.datasource.js",
   "scripts": {

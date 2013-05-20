@@ -2,7 +2,7 @@
 
 KendoUI DataSource extension to integrate [Kendo UI][3], [BreezeJS][4], [KnockoutJS][5] and [knockout-kendo][7] 
 with KendoUI widgets (Grid specifically).  
-A sample .net Single Page Application (SPA) solution is also available based on the [HotTowel template][hottowel].
+A live [sample][spa] .net Single Page Application (SPA) site & solution is available based on the [HotTowel template][hottowel].
 
 ## Key Points
 * Breeze entities in particular have two recursive properties (entityAspect and entityType) that will cause stackoverflow issues when the Grid iterates over the returned properties. By default, the `mapping` property will do this automatically, or you can override completely. 
@@ -207,10 +207,16 @@ mapping.mapToJS:
         }
 
 ## Run the SPA Sample
-The SPA sample uses the BreezeJS, KnockoutJS, DurandalJS, EnityFramework, and the Northwind db  - all direct from the HotTowel template (less the db and context/model classes).
-Build the HotTowel solution, run, then click one of the 'Grid' tabs.  The each grid will databind with the Northwind/Products data via Knockout, Breeze, and this extension.
+The [SPA sample][spa] (live) uses the BreezeJS, KnockoutJS, DurandalJS, EnityFramework, and the Northwind db  - all direct from the HotTowel template (less the db and context/model classes).
+
+To use locally, build the HotTowel solution, run, then click one of the 'Grid' tabs.  The each grid will databind with the Northwind/Products data via Knockout, Breeze, and this extension.
 Paging, Sorting, and Filtering are all enabled.  
 Watch the browser developer tools network log to see the specific query requests
+
+### Build
+If you haven't used [Grunt][grunt] before, be sure to check out the [Getting Started guide][grunt-start], as it explains how to create a Gruntfile as well as install and use Grunt plugins. Once you're familiar with that process, you may install everything required with `npm install`   
+
+To build, run: `grunt build`  from the command line.
 
 ### Not Addressed
 Create, Update, and Delete are not addressed at this time.
@@ -272,3 +278,6 @@ Please do not create support requests for this project in KendoUI, BreezeJS, Kno
 [10]: http://www.jquery.com
 [override]: https://github.com/kendo-labs/knockout-kendo/blob/master/src/knockout-kendo-core.js#L217
 [ko-kendo-chart]: http://kendo-labs.github.io/knockout-kendo/dataviz/Chart.html
+[grunt]: http://gruntjs.com/  
+[grunt-start]: http://gruntjs.com/getting-started
+[spa]: http://kendo-breeze-knockout.azurewebsites.net/

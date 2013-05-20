@@ -24,6 +24,7 @@
           filterPredicate = this.defaultFilter,
           sortOps = options.data.sort,
           filterOps = options.data.filter,
+          useLocalCache = options.useLocalCache,
           query = {},
           payload = { data: [], total: 0 },
           self = this;
@@ -70,7 +71,12 @@
 
       // apply Total Count
       query = query.inlineCount(this.inlineCount);
-
+      
+      /* needs further testing / documentation
+      if (useLocalCache) {
+        query = query.using(breeze.FetchStrategy.FromLocalCache);
+      }
+      */
       this.entityManager.executeQuery(query)
           .then(querySucceeded)
           .fail(queryFailed)
@@ -86,25 +92,7 @@
         options.success(payload); // notify the DataSource that the operation is complete
          return true;
       }
-      function querySucceeded_old(xhr) {
-        if (self.map) {
-          payload.data = self.map(xhr);
-        } else {
-          if (self.autoMapToJS) { // Breeze entities contain recursive properties - watch for those eliminate those
-            if (!ko.mapping) {
-              throw new Error('knockout mapping plugin is required!');
-            }
-            payload.data = self.autoMapToJS(xhr.results);
-          } else {
-            payload.data = xhr.results;
-          }
-        }
-        if (self.inlineCount) {
-          payload.total = xhr.inlineCount;
-        }
-        options.success(payload); // notify the DataSource that the operation is complete
-        return true;
-      }
+      
       function queryFailed(rejected) {
         payload.error = rejected;
         if (self.onFail) {
@@ -143,6 +131,7 @@
       options.defaultSort = options.defaultSort || "";
       options.serverSorting = defValue(options.serverSorting, true);
       options.serverFiltering = defValue(options.serverFiltering, true);
+      options.useLocalCache = defValue(options.useLocalCache, true);
       // Could be overridden at run-time.
       options.mapping = mergeInto({
         baseIgnore: ['entityType', 'entityAspect'],
