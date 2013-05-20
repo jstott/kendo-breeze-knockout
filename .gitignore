@@ -48,6 +48,4 @@ _svn
 *.DS_Store
 #old depricated projects
 
-BootConfigDev*
-Build/paths-tablet.txt
 
