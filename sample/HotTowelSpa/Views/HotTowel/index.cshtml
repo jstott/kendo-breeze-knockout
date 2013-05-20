@@ -60,14 +60,10 @@
 	<script src="/scripts/knockout-kendo.js" type="text/javascript"></script>
     <script src="/scripts/kendo-breeze-knockout.datasource.js" type="text/javascript"></script>
 
-    @if (HttpContext.Current.IsDebuggingEnabled)
-    {
-        <script type="text/javascript" src="~/App/durandal/amd/require.js" data-main="@Url.Content("~/App/main")"></script>
-    }
-    else
-    {
-        <!-- Remember to run the Durandal optimizer.exe to create the main-built.js  -->
-        <script type="text/javascript" src="~/App/main-built.js"></script>
-    }
+
+
+   <script type="text/javascript" src="~/App/durandal/amd/require.js" data-main="@Url.Content("~/App/main")"></script>
+
+
 </body>
 </html>
