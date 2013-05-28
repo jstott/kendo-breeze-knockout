@@ -243,7 +243,7 @@ Download the plugin from here or grab the latest build from the source. Referenc
 	<script src="js/knockout-2.2.0.js"></script>
 	<script src="js/knockout-kendo.min.js"></script>
 	<script src="js/knockout-kendo-mapping.min.js"></script>
-	<script src="js/breeze.ko.kendo.datasource.js"></script>
+	<script src="js/kendo-breeze-knockout.datasource.js"></script>
 
 ## License / Disclaimer
 This project has been released under the [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0.html), 
