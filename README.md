@@ -141,11 +141,7 @@ The following lists all available properties and their defaults and if required 
           entityManager: null,    // [*] Breeze manager 
           endPoint: "",           // [*] Entity string name or EntityQuery instance object
           defaultSort: "",        // define default sort 
-          autoMapToJS: {          // Will autoMap  Breeze Entities - can set false
-            baseIgnore: ['entityType', 'entityAspect'],
-            include: [],
-            ignore: [],
-            mapping : function(results) {
+          mapping : {
               baseIgnore: ['entityType', 'entityAspect'],
               include: [],
               ignore: [],
