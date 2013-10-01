@@ -1,3 +1,4 @@
+/*! kendo-breeze-knockout.datasource - v0.0.5 - 2013-05-20 - https://github.com/jstott/kendo-breeze-knockout.git */
 /* Usage Examples - see the readme at https://github.com/jstott/kendo-breeze-knockout/blob/master/README.md */
 
 (function ($, kendo, breeze, ko) {
@@ -9,6 +10,7 @@
     this.entityManager = config.entityManager;
     this.endPoint = config.endPoint;
     this.defaultSort = config.defaultSort;
+    this.predicateWhere = config.predicateWhere;
     this.mapping = config.mapping;  // Breeze entities (not projection queries) contain recursive properties (entityAspect, entityType) - eliminate those (at least) to prevent stack overflow when grid iterates properties
     this.onFail = config.onFail;
     this.inlineCount = config.serverPaging;
@@ -20,10 +22,12 @@
   $.extend(BreezeTransport.prototype, {
 
     read: function (options) {
-      var orderVal = this.defaultSort,
-          filterPredicate = this.defaultFilter,
+      var predicateFilters,
+          predicates = [],
+          orderVal = this.defaultSort,
           sortOps = options.data.sort,
           filterOps = options.data.filter,
+          predicateLogic = this.predicateWhere,
           useLocalCache = options.useLocalCache,
           query = {},
           payload = { data: [], total: 0 },
@@ -51,14 +55,17 @@
 
       // apply filtering
       if (this.serverFiltering && filterOps && filterOps.filters.length > 0) {
-        for (var x = 0; x < filterOps.filters.length; x++) {
-          query = query.where(
+        predicateLogic = filterOps.logic || predicateLogic; // filters might have passed in logic operator
+        for (var x = 0, len =filterOps.filters.length ; x <len; x++) {
+          predicates.push(new breeze.Predicate(
             filterOps.filters[x].field,
             mapOperator(filterOps.filters[x].operator),
-            filterOps.filters[x].value);
+            filterOps.filters[x].value));
         }
+        predicateFilters = breeze.Predicate[predicateLogic](predicates);
+        query = query.where(predicateFilters);
       }
-
+      
       // apply Paging
       if (this.serverPaging) {
         if (options.data.skip) {
@@ -71,7 +78,7 @@
 
       // apply Total Count
       query = query.inlineCount(this.inlineCount);
-      
+
       /* needs further testing / documentation
       if (useLocalCache) {
         query = query.using(breeze.FetchStrategy.FromLocalCache);
@@ -85,14 +92,14 @@
       function querySucceeded(xhr) {
 
         payload.data = self.mapping.mapToJS(xhr.results);
-        
+
         if (self.inlineCount) {
           payload.total = xhr.inlineCount;
         }
         options.success(payload); // notify the DataSource that the operation is complete
-         return true;
+        return true;
       }
-      
+
       function queryFailed(rejected) {
         payload.error = rejected;
         if (self.onFail) {
@@ -137,16 +144,16 @@
         baseIgnore: ['entityType', 'entityAspect'],
         include: [],
         ignore: [],
-        mapToJS : function(results) {
-          var koMapping = { 
-            'include': this.include, 
-            'ignore': this.baseIgnore.concat(this.ignore) 
+        mapToJS: function (results) {
+          var koMapping = {
+            'include': this.include,
+            'ignore': this.baseIgnore.concat(this.ignore)
           };
           // if you override - you might not care about using ko.mapping?
           if (!ko.mapping) {
             throw new Error('knockout mapping plugin is required!');
           }
-          return ko.mapping.toJS(results,koMapping);
+          return ko.mapping.toJS(results, koMapping);
         }
       }, options.mapping);
       options.schema = mergeInto({
